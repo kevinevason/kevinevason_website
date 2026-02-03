@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>The Sublime Way</title>
+    <title>My Corner of the Web</title>
     <style>
-        body { font-family: sans-serif; background: #222; color: #fff; text-align: center; padding: 50px; }
-        h1 { color: #A6E22E; } /* Sublime Green */
+        body {
+            background-color: #0f0f0f; /* Dark mode background */
+            color: #e0e0e0;            /* Light grey text */
+            font-family: 'Courier New', monospace; /* Hacker vibes */
+            display: flex;             /* These 3 lines... */
+            justify-content: center;   /* ...center everything... */
+            align-items: center;       /* ...perfectly in the middle. */
+            height: 100vh;             /* Full screen height */
+            margin: 0;
+        }
+
+        /* This is a "Class". We can reuse it. */
+        .card {
+            background: #1a1a1a;
+            padding: 40px;
+            border: 2px solid #ff0055; /* Neon pink border */
+            border-radius: 10px;       /* Rounded corners */
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5); /* Neon glow */
+        }
+
+        button {
+            background: #ff0055;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #ff4488; /* Change color when mouse hovers */
+        }
     </style>
 </head>
+
 <body>
-    <h1>Hello World!</h1>
-    <p>Built with the Speed of Sublime.</p>
+
+    <div class="card">
+        <h1>Welcome to the Void</h1>
+        <p>No WordPress. No bloat. Just code.</p>
+        
+        <button>Click Me</button>
+    </div>
+
 </body>
 </html>
