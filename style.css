@@ -1,28 +1,42 @@
-/* Body transitions for smooth color switching */
+/* Default: Light Mode */
 body {
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* The clickable icon */
+/* Dark Mode State */
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Places the icon in the top left, exactly like your previous button */
+.top-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* The Icon Button */
 .theme-icon {
-    width: 50px;
-    height: 50px;
+    width: 50px; /* Adjust size as you like */
+    height: auto;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease;
 }
 
-/* Hover effect: Scale up */
+/* Hover: Make it bigger */
 .theme-icon:hover {
     transform: scale(1.2);
 }
 
-/* Click effect: Slight rotation */
+/* Click: Small rotation effect */
 .theme-icon:active {
-    transform: rotate(15deg) scale(1.1);
-}
-
-.top-controls {
-    position: absolute;
-    top: 20px;
-    left: 20px; /* Changed to left based on your screenshot */
+    transform: scale(1.1) rotate(15deg);
 }
