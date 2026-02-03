@@ -1,26 +1,26 @@
-const themeToggle = document.getElementById('themeToggle');
-const statusBtn = document.getElementById('statusBtn');
-const body = document.body;
-const moonImage = document.getElementById("moon");
+document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+    const themeIcon = document.getElementById("themeToggle");
 
-function updateStyles() {
-    const isLight = body.classList.contains('light-mode');
-    if (isLight) {
-        moonImage.style.visibility = "visible";
-    } else {
-        statusBtn.innerText = "LIGHT MODE";
-        statusBtn.style.background = "#000000";
-        statusBtn.style.color = "#ffffff";
+    const sunUrl = "https://github.com/kevinevason/kevinevason_website/blob/main/sun.png?raw=true";
+    const moonUrl = "https://github.com/kevinevason/kevinevason_website/blob/main/moon.png?raw=true";
+
+    function updateUI() {
+        const isDark = body.classList.contains("dark-mode");
+        
+        // If dark mode is on, show moon. Otherwise, show sun.
+        themeIcon.src = isDark ? moonUrl : sunUrl;
+        
+        // Update storage
+        localStorage.setItem("theme", isDark ? "dark" : "light");
     }
-}
 
-updateStyles();
+    // Initial check
+    updateUI();
 
-[themeToggle, statusBtn].forEach(el => {
-    el.addEventListener('click', function() {
-        body.classList.toggle('light-mode');
-        const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
-        localStorage.setItem('theme', mode);
-        updateStyles();
+    // Toggle on click
+    themeIcon.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        updateUI();
     });
 });

@@ -2,35 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kevin evason</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.body.classList.add('light-mode');
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
         }
     </script>
 
-    <img id="sunImage" src="https://github.com/kevinevason/kevinevason_website/blob/main/sun.png?raw=true">
-    <img id="moonImage" src="https://github.com/kevinevason/kevinevason_website/blob/main/moon.png?raw=true">
-    <a href="#" id="toggleImage">Toggle image</a>
-
-    <script>
-    const img = document.getElementById("sunImage");
-    const images = ["sunImage", "moonImage"];
-    let index = 0;
-
-    document.getElementById("toggleImage").onclick = function (e) {
-    e.preventDefault();
-    index = 1 - index; // flips between 0 and 1
-    img.src = images[index];
-    };
-    </script>
-
     <div class="top-controls">
-        <button id="statusBtn">LIGHT MODE</button>
+        <img id="themeToggle" class="theme-icon" src="" alt="Toggle Theme">
     </div>
 
     <div class="card">
