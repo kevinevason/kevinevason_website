@@ -3,34 +3,81 @@
 <head>
     <title>kevin evason</title>
     <style>
-        /* Default: Dark Mode */
+        /* 1. GLOBAL STYLES */
         body {
             background-color: #000000;
             color: #e0e0e0;
             font-family: 'Courier New', monospace;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Centers the card */
+            align-items: center;     /* Centers the card */
             height: 100vh;
             margin: 0;
             transition: background-color 0.3s ease;
+            overflow: hidden; /* Prevents scrollbars if not needed */
         }
 
-        /* Light Mode Overrides */
         body.light-mode {
             background-color: #ffffff;
             color: #1a1a1a;
         }
 
+        /* 2. THE TOP-LEFT CONTROLS */
+        .top-controls {
+            position: fixed; /* Pins to the screen */
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .img-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s;
+            width: fit-content;
+        }
+
+        .img-button:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-pic {
+            width: 80px;  /* Smaller for the corner */
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff0055;
+            transition: border-color 0.3s;
+        }
+
+        #statusBtn {
+            background: #000000;
+            color: white;
+            border: 2px solid #ff0055;
+            padding: 8px 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* 3. THE CENTER CARD */
         .card {
             background: #1a1a1a;
-            padding: 40px;
-            border: 2px solid #ff0055;
+            padding: 50px;
+            border: 2px solid #ffffff;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
             max-width: 400px;
-            transition: background 0.3s, border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         body.light-mode .card {
@@ -39,75 +86,63 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
 
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #e0e0e0;
-            margin-bottom: 20px;
-        }
-
-        button {
-            background: #ff0055;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.1s, background 0.3s;
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
+        h1 { margin: 0; font-size: 24px; }
+        p { opacity: 0.8; }
     </style>
 </head>
 <body>
 
     <script>
-        // We check this immediately before the HTML is even fully parsed
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light-mode');
         }
     </script>
 
-    <div class="card">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t6d3I1Y3V2b3F6aDdob3Z6a3I1Y3V2b3F6aDdob3Z6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o0vwzuFUEbmDTmeXjj/giphy.gif" 
-             alt="Hacker Cat" 
-             class="profile-pic">
+    <div class="top-controls">
+        <button id="themeToggle" class="img-button"></button>
+        <button id="statusBtn">LIGHT MODE</button>
+    </div>
 
+    <div class="card">
         <h1>kevin evason</h1>
         <p>"under heavy construction..."</p>
-        
-        <button id="themeToggle">Switch Mode</button>
     </div>
 
     <script>
-        const button = document.getElementById('themeToggle');
+        const themeToggle = document.getElementById('themeToggle');
+        const statusBtn = document.getElementById('statusBtn');
         const body = document.body;
 
-        // Set initial button text based on current mode
-        if (body.classList.contains('light-mode')) {
-            button.innerText = "Go Dark";
-            button.style.background = "#333";
-        } else {
-            button.innerText = "Go Light";
+        function updateStyles() {
+            const isLight = body.classList.contains('light-mode');
+            
+            if (isLight) {
+                statusBtn.innerText = "DARK MODE";
+                statusBtn.style.background = "#ffffff";
+                statusBtn.style.color = "#000000";
+                statusBtn.style.borderColor = "#000000";
+            } else {
+                statusBtn.innerText = "LIGHT MODE";
+                statusBtn.style.background = "#000000";
+                statusBtn.style.color = "#ffffff";
+                statusBtn.style.borderColor = "#ffffff";
+            }
         }
 
-        button.addEventListener('click', function() {
-            body.classList.toggle('light-mode');
-            
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light');
-                button.innerText = "Go Dark";
-                button.style.background = "#333";
-            } else {
-                localStorage.setItem('theme', 'dark');
-                button.innerText = "Go Light";
-                button.style.background = "#ff0055";
-            }
+        // Initialize display
+        updateStyles();
+
+        // Add event listeners to both the image and the button
+        [themeToggle, statusBtn].forEach(el => {
+            el.addEventListener('click', function() {
+                body.classList.toggle('light-mode');
+                
+                // Save preference
+                const mode = body.classList.contains('light-mode') ? 'light' : 'dark';
+                localStorage.setItem('theme', mode);
+                
+                updateStyles();
+            });
         });
     </script>
 
