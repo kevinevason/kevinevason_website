@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>My Corner of the Web</title>
+    <title>kevin evason</title>
     <style>
+        /* Default: Dark Mode */
         body {
-            background-color: #0f0f0f;
+            background-color: #000000;
             color: #e0e0e0;
             font-family: 'Courier New', monospace;
             display: flex;
@@ -12,6 +13,13 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Light Mode Overrides */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #1a1a1a;
         }
 
         .card {
@@ -21,16 +29,21 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
-            /* Limits the width so it looks good on phones too */
-            max-width: 400px; 
+            max-width: 400px;
+            transition: background 0.3s, border-color 0.3s;
         }
 
-        /* NEW: Styling the image */
+        body.light-mode .card {
+            background: #f0f0f0;
+            border-color: #333;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
         .profile-pic {
-            width: 150px;       /* Force it to be 150px wide */
-            height: 150px;      /* Force it to be 150px tall */
-            border-radius: 50%; /* Make it a perfect circle */
-            object-fit: cover;  /* Crop it nicely if it's not square */
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
             border: 3px solid #e0e0e0;
             margin-bottom: 20px;
         }
@@ -43,40 +56,58 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
-            transition: transform 0.1s; /* Animation speed */
+            transition: transform 0.1s, background 0.3s;
         }
 
         button:active {
-            transform: scale(0.95); /* Shrink slightly when clicked */
+            transform: scale(0.95);
         }
     </style>
 </head>
-
 <body>
+
+    <script>
+        // We check this immediately before the HTML is even fully parsed
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
 
     <div class="card">
         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t6d3I1Y3V2b3F6aDdob3Z6a3I1Y3V2b3F6aDdob3Z6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o0vwzuFUEbmDTmeXjj/giphy.gif" 
              alt="Hacker Cat" 
              class="profile-pic">
 
-        <h1>Welcome to the Void</h1>
-        <p>No WordPress. No bloat. Just code.</p>
+        <h1>kevin evason</h1>
+        <p>"under heavy construction..."</p>
         
-        <button id="myButton">Don't Click Me</button>
+        <button id="themeToggle">Switch Mode</button>
     </div>
 
     <script>
-        // 1. Find the button in the HTML
-        const button = document.getElementById('myButton');
+        const button = document.getElementById('themeToggle');
+        const body = document.body;
 
-        // 2. Listen for a "click" event
+        // Set initial button text based on current mode
+        if (body.classList.contains('light-mode')) {
+            button.innerText = "Go Dark";
+            button.style.background = "#333";
+        } else {
+            button.innerText = "Go Light";
+        }
+
         button.addEventListener('click', function() {
-            // 3. Do this when clicked
-            alert("I TOLD YOU NOT TO CLICK ME!");
+            body.classList.toggle('light-mode');
             
-            // Challenge: Change the button text after clicking
-            button.innerText = "Regret.";
-            button.style.background = "grey";
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                button.innerText = "Go Dark";
+                button.style.background = "#333";
+            } else {
+                localStorage.setItem('theme', 'dark');
+                button.innerText = "Go Light";
+                button.style.background = "#ff0055";
+            }
         });
     </script>
 
