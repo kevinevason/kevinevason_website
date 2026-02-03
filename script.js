@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const moonUrl = "https://github.com/kevinevason/kevinevason_website/blob/main/moon.png?raw=true";
 
     function updateUI() {
-        const isDark = body.classList.contains("dark-mode");
+        const isDark = body.classList.contains("dark-mode");//hej
         
         // If dark mode is on, show moon. Otherwise, show sun.
         themeIcon.src = isDark ? moonUrl : sunUrl;
