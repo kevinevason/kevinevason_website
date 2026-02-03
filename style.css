@@ -1,0 +1,45 @@
+body {
+    background-color: #000000;
+    color: #e0e0e0;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s ease;
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+.top-controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ff0055;
+}
+
+.card {
+    background: #1a1a1a;
+    padding: 50px;
+    border: 2px solid #ff0055;
+    border-radius: 10px;
+    text-align: center;
+}
+
+body.light-mode .card {
+    background: #f0f0f0;
+    border-color: #333;
+}
