@@ -1,12 +1,12 @@
 const themeToggle = document.getElementById('themeToggle');
 const statusBtn = document.getElementById('statusBtn');
 const body = document.body;
-const moon = document.getElementById("moon");
+const moonImage = document.getElementById("moon");
 
 function updateStyles() {
     const isLight = body.classList.contains('light-mode');
     if (isLight) {
-        moon.style.
+        moonImage.style.visibility = "visible";
     } else {
         statusBtn.innerText = "LIGHT MODE";
         statusBtn.style.background = "#000000";

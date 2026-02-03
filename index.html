@@ -13,17 +13,23 @@
         }
     </script>
 
+    <img id="sunImage" src="https://github.com/kevinevason/kevinevason_website/blob/main/sun.png">
+    <img id="moonImage" src="https://github.com/kevinevason/kevinevason_website/blob/main/moon.png">
+    <a href="#" id="toggleImage">Toggle image</a>
+
+    <script>
+    const img = document.getElementById("sunImage");
+    const images = ["sunImage", "moonImage"];
+    let index = 0;
+
+    document.getElementById("toggleImage").onclick = function (e) {
+    e.preventDefault();
+    index = 1 - index; // flips between 0 and 1
+    img.src = images[index];
+    };
+    </script>
+
     <div class="top-controls">
-        <button id="sun" class="img-button">
-            <img src="https://github.com/kevinevason/kevinevason_website/blob/main/sun.png" 
-                 alt="sun" 
-                 class="profile-pic">
-        </button>
-        <button id="moon" class="img-button">
-            <img src="https://github.com/kevinevason/kevinevason_website/blob/main/moon.png" 
-                 alt="moon" 
-                 class="profile-pic">
-        </button>
         <button id="statusBtn">LIGHT MODE</button>
     </div>
 
