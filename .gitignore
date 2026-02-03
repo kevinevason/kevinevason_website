@@ -1,0 +1,17 @@
+# Mac System Junk
+.DS_Store
+
+# Windows System Junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs and Debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node Modules (You will need this later for Astro!)
+node_modules/
+dist/
+.vercel/
