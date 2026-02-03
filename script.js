@@ -1,13 +1,12 @@
 const themeToggle = document.getElementById('themeToggle');
 const statusBtn = document.getElementById('statusBtn');
 const body = document.body;
+const moon = document.getElementById("moon");
 
 function updateStyles() {
     const isLight = body.classList.contains('light-mode');
     if (isLight) {
-        statusBtn.innerText = "DARK MODE";
-        statusBtn.style.background = "#ffffff";
-        statusBtn.style.color = "#000000";
+        moon.style.
     } else {
         statusBtn.innerText = "LIGHT MODE";
         statusBtn.style.background = "#000000";
