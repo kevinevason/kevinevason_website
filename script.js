@@ -2,23 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
     const themeIcon = document.getElementById("themeToggle");
 
+    // Using the raw GitHub URLs
     const sunUrl = "https://github.com/kevinevason/kevinevason_website/blob/main/sun.png?raw=true";
     const moonUrl = "https://github.com/kevinevason/kevinevason_website/blob/main/moon.png?raw=true";
 
     function updateUI() {
-        const isDark = body.classList.contains("dark-mode");//hejewreasdf
+        const isDark = body.classList.contains("dark-mode");
         
-        // If dark mode is on, show moon. Otherwise, show sun.
+        // Swap the image based on the mode
         themeIcon.src = isDark ? moonUrl : sunUrl;
         
-        // Update storage
+        // Update LocalStorage so it remembers your choice
         localStorage.setItem("theme", isDark ? "dark" : "light");
     }
 
-    // Initial check
+    // Initialize the page on load
     updateUI();
 
-    // Toggle on click
+    // Toggle logic when clicking the icon
     themeIcon.addEventListener("click", () => {
         body.classList.toggle("dark-mode");
         updateUI();

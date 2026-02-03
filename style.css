@@ -1,41 +1,41 @@
-/* Light Mode (Default) */
+/* Default: Light Mode */
 body {
     background-color: #ffffff;
     color: #000000;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    margin: 0;
     display: flex;
     justify-content: center;
-    align-items: center;/*hejewrewrasdf*/
+    align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
-/* Dark Mode */
+/* Dark Mode State */
 body.dark-mode {
-    background-color: #121212;
+    background-color: #000000;
     color: #ffffff;
-}
-
-.theme-icon {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Hover effect: Scale up */
-.theme-icon:hover {
-    transform: scale(1.2);
-}
-
-/* Click effect: Slight rotation */
-.theme-icon:active {
-    transform: scale(1.1) rotate(15deg);
 }
 
 .top-controls {
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+/* The Toggle Icon Styles */
+.theme-icon {
+    width: 60px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover: Make it bigger */
+.theme-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Click: Small rotation effect */
+.theme-icon:active {
+    transform: scale(1.1) rotate(15deg);
 }
