@@ -4,24 +4,35 @@
     <title>My Corner of the Web</title>
     <style>
         body {
-            background-color: #0f0f0f; /* Dark mode background */
-            color: #e0e0e0;            /* Light grey text */
-            font-family: 'Courier New', monospace; /* Hacker vibes */
-            display: flex;             /* These 3 lines... */
-            justify-content: center;   /* ...center everything... */
-            align-items: center;       /* ...perfectly in the middle. */
-            height: 100vh;             /* Full screen height */
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
         }
 
-        /* This is a "Class". We can reuse it. */
         .card {
             background: #1a1a1a;
             padding: 40px;
-            border: 2px solid #ff0055; /* Neon pink border */
-            border-radius: 10px;       /* Rounded corners */
+            border: 2px solid #ff0055;
+            border-radius: 10px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5); /* Neon glow */
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+            /* Limits the width so it looks good on phones too */
+            max-width: 400px; 
+        }
+
+        /* NEW: Styling the image */
+        .profile-pic {
+            width: 150px;       /* Force it to be 150px wide */
+            height: 150px;      /* Force it to be 150px tall */
+            border-radius: 50%; /* Make it a perfect circle */
+            object-fit: cover;  /* Crop it nicely if it's not square */
+            border: 3px solid #e0e0e0;
+            margin-bottom: 20px;
         }
 
         button {
@@ -32,10 +43,11 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
+            transition: transform 0.1s; /* Animation speed */
         }
 
-        button:hover {
-            background: #ff4488; /* Change color when mouse hovers */
+        button:active {
+            transform: scale(0.95); /* Shrink slightly when clicked */
         }
     </style>
 </head>
@@ -43,11 +55,30 @@
 <body>
 
     <div class="card">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDdtZ2t6d3I1Y3V2b3F6aDdob3Z6a3I1Y3V2b3F6aDdob3Z6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o0vwzuFUEbmDTmeXjj/giphy.gif" 
+             alt="Hacker Cat" 
+             class="profile-pic">
+
         <h1>Welcome to the Void</h1>
         <p>No WordPress. No bloat. Just code.</p>
         
-        <button>Click Me</button>
+        <button id="myButton">Don't Click Me</button>
     </div>
+
+    <script>
+        // 1. Find the button in the HTML
+        const button = document.getElementById('myButton');
+
+        // 2. Listen for a "click" event
+        button.addEventListener('click', function() {
+            // 3. Do this when clicked
+            alert("I TOLD YOU NOT TO CLICK ME!");
+            
+            // Challenge: Change the button text after clicking
+            button.innerText = "Regret.";
+            button.style.background = "grey";
+        });
+    </script>
 
 </body>
 </html>
